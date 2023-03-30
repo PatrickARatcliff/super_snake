@@ -5,14 +5,14 @@ let scl = 10;
 let width = 500;
 let height = 500;
 
-let cols = Math.floor(width / scl);
-let rows = Math.floor(height / scl);
-
 function setup() {
+  let cols = floor(width / scl);
+  let rows = floor(height / scl);
+
   createCanvas(width, height);
-  pcc = new Snake(245, 245);
-  mouse = new Mouse();
-  mouse.locate();
+  pcc = new Snake(scl);
+  console.log(pcc);
+  mouse = new Mouse(scl);
   // console.log(mouse);
   frameRate(10);
 }
@@ -24,19 +24,11 @@ function draw() {
   mouse.display();
   if (pcc.eat(mouse)) {
     mouse.locate();
+    console.log(mouse)
   }
-};
-
-function mousePressed() {
-  background(0);
-  pcc.x = 245;
-  pcc.y = 245;
-  pcc.xSpeed = 0;
-  pcc.ySpeed = 0;
 }
 
 function keyPressed(event) {
-  event.preventDefault();
   if (keyCode === UP_ARROW) {
     pcc.direction(0, -1);
   } else if (event.keyCode === DOWN_ARROW) {
