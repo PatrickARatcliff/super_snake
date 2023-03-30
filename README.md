@@ -58,7 +58,7 @@ Contributor Covenant Code of Conduct
 ## Resources
 
 1. GitHub Repo: <https://github.com/PatrickARatcliff/super_snake>
-2. GutHub Pages URL: ...processing
+2. GutHub Pages URL: <https://patrickaratcliff.github.io/super_snake/>
 3. p5.js web editor URL: <https://editor.p5js.org/PatrickARatcliff/full/0oFubilss>
 
 ## Credits
