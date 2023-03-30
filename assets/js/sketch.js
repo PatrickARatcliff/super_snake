@@ -1,8 +1,8 @@
 let pcc;
 let mouse;
 let scl = 25;
+let fr = 11; //starting FPS
 let img;
-let mySound;
 let splatters = [];
 
 let width = 700;
@@ -19,38 +19,47 @@ function preload() {
 }
 
 function setup() {
+  // Create variables to snap objects to grid
   let cols = floor(width / scl);
   let rows = floor(height / scl);
 
   createCanvas(width, height);
   pcc = new Snake(scl, snakeHead);
-  // console.log(pcc);
   mouse = new Mouse(scl, mouseIcon);
-  // console.log(mouse);
   bgMusic.setVolume(0.33);
   bgMusic.loop();
-  frameRate(11);
+  frameRate(fr);
 }
 
 function draw() {
   background(fieldBG);
+  // Render splatter for each location where mouse is eaten  
   for (let i = 0; i < splatters.length; i++) {
     let splatter = splatters[i];
     image(afterMath, splatter.x - 10, splatter.y - 10, scl + 20, scl + 20);
   }
-  pcc.update();
-  pcc.display();
-  mouse.display();
-
+  // Define actions when mouse "eaten" by snake
   if (pcc.eat(mouse)) {
+    // Create/push splatter objects to array for rendering
     splatters.push({ x: mouse.x, y: mouse.y });
-    console.log(splatters);
+    // Re-locate mouse 
     mouse.locate();
     eatSound.play();
-  }
+  } 
+  
+  pcc.gameOver();
+  pcc.update();
+  pcc.display();
+  mouse.display(); 
 }
-
+// Start game via mouse-click
+function mouseClicked(event) {
+  event.preventDefault();
+  pcc.gameStart();
+} 
+// Change snake direction using Snake object direction function
 function keyPressed(event) {
+  event.preventDefault();
   if (keyCode === UP_ARROW) {
     pcc.direction(0, -1);
   } else if (event.keyCode === DOWN_ARROW) {
