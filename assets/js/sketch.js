@@ -1,7 +1,8 @@
 let pcc;
 let mouse;
 let scl = 25;
-let fr = 11; //starting FPS
+// Starting FPS
+let fr = 11; 
 let img;
 let splatters = [];
 
