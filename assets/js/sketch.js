@@ -1,27 +1,31 @@
 let pcc;
-let scl = 3;
-let prey; 
+let mouse;
+let scl = 10;
+
+let width = 500;
+let height = 500;
+
+let cols = Math.floor(width / scl);
+let rows = Math.floor(height / scl);
 
 function setup() {
-  createCanvas(500, 500);
-  pcc = new Snake();
+  createCanvas(width, height);
+  pcc = new Snake(245, 245);
+  mouse = new Mouse();
+  mouse.locate();
+  // console.log(mouse);
+  frameRate(10);
 }
 
 function draw() {
   background(0);
   pcc.update();
   pcc.display();
-}
-
-function mySquare(x, y, size, backgroundColor, strokeColor) {
-  stroke(strokeColor);
-  strokeWeight(1);
-  fill(backgroundColor);
-  quad(x, y, x + size, y, x+ size, y + size, x, y + size);
-  stroke(255, 0, 0, 50);
-  line(x, y, x + size, y + size);
-  line(x, y + size, x + size, y);
-}
+  mouse.display();
+  if (pcc.eat(mouse)) {
+    mouse.locate();
+  }
+};
 
 function mousePressed() {
   background(0);
