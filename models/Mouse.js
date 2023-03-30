@@ -1,4 +1,4 @@
-function Mouse(scl, img) {
+function Mouse(scl, img,) {
     let cols = floor(width/scl);
     let rows = floor(height/scl);
     

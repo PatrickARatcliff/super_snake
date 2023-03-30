@@ -1,10 +1,11 @@
 function Snake(scl, img) {
   let cols = floor(width / scl);
   let rows = floor(height / scl);
+  // let splatters = [];
 
   // this.size = scl;
-  this.x = 250;
-  this.y = 250;
+  this.x = width/2;
+  this.y = height/2;
   this.xSpeed = 0;
   this.ySpeed = 0;
   // this.c = color(this.x, this.y, 0);

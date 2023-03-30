@@ -2,13 +2,20 @@ let pcc;
 let mouse;
 let scl = 25;
 let img;
+let mySound;
+let splatters = [];
 
 let width = 700;
 let height = 700;
 
 function preload() {
-  snakeHead = loadImage('assets/images/square_snake.svg');
-  mouseIcon = loadImage('assets/images/mouse.svg')
+  snakeHead = loadImage("assets/images/square_snake.svg");
+  mouseIcon = loadImage("assets/images/mouse.svg");
+  afterMath = loadImage("assets/images/blood.png");
+  fieldBG = loadImage("assets/images/field_bg.jpeg");
+  soundFormats("wav", "mp3");
+  eatSound = loadSound("assets/audio/num.wav");
+  bgMusic = loadSound("assets/audio/thrash_metal.mp3");
 }
 
 function setup() {
@@ -17,20 +24,29 @@ function setup() {
 
   createCanvas(width, height);
   pcc = new Snake(scl, snakeHead);
-  console.log(pcc);
+  // console.log(pcc);
   mouse = new Mouse(scl, mouseIcon);
   // console.log(mouse);
-  frameRate(10);
+  bgMusic.setVolume(0.33);
+  bgMusic.loop();
+  frameRate(11);
 }
 
 function draw() {
-  background(0);
+  background(fieldBG);
+  for (let i = 0; i < splatters.length; i++) {
+    let splatter = splatters[i];
+    image(afterMath, splatter.x - 10, splatter.y - 10, scl + 20, scl + 20);
+  }
   pcc.update();
   pcc.display();
   mouse.display();
+
   if (pcc.eat(mouse)) {
+    splatters.push({ x: mouse.x, y: mouse.y });
+    console.log(splatters);
     mouse.locate();
-    console.log(mouse)
+    eatSound.play();
   }
 }
 
