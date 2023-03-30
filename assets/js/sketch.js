@@ -1,18 +1,24 @@
 let pcc;
 let mouse;
-let scl = 10;
+let scl = 25;
+let img;
 
-let width = 500;
-let height = 500;
+let width = 700;
+let height = 700;
+
+function preload() {
+  snakeHead = loadImage('assets/images/square_snake.svg');
+  mouseIcon = loadImage('assets/images/mouse.svg')
+}
 
 function setup() {
   let cols = floor(width / scl);
   let rows = floor(height / scl);
 
   createCanvas(width, height);
-  pcc = new Snake(scl);
+  pcc = new Snake(scl, snakeHead);
   console.log(pcc);
-  mouse = new Mouse(scl);
+  mouse = new Mouse(scl, mouseIcon);
   // console.log(mouse);
   frameRate(10);
 }

@@ -1,4 +1,4 @@
-function Mouse(scl) {
+function Mouse(scl, img) {
     let cols = floor(width/scl);
     let rows = floor(height/scl);
     
@@ -7,12 +7,12 @@ function Mouse(scl) {
     // console.log(y);
     this.xSpeed = 0;
     this.ySpeed = 0;
-    this.c = GRAY;
+    // this.c = GRAY;
   
     this.display = () => {
-      fill(this.c);
-      stroke(255);
-      rect(this.x, this.y, scl, scl);
+      noStroke();
+      noFill();
+      image(img, this.x, this.y, scl, scl);
     };
   
     this.locate = () => {

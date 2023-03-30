@@ -1,7 +1,7 @@
-function Snake(scl) {
-  let cols = floor(width/scl);
-  let rows = floor(height/scl);
-  
+function Snake(scl, img) {
+  let cols = floor(width / scl);
+  let rows = floor(height / scl);
+
   // this.size = scl;
   this.x = 250;
   this.y = 250;
@@ -21,8 +21,14 @@ function Snake(scl) {
   //   line(x, y + size, x + size, y);
   // };
 
-  this.eat = (position) => {
-    const prox = dist(this.x, this.y, position.x, position.y);
+  this.head = (x, y) => {
+    noStroke();
+    noFill();
+    image(img, x - 2.5, y - 2.5, scl + 5, scl + 5);
+  };
+
+  this.eat = (pos) => {
+    const prox = dist(this.x, this.y, pos.x, pos.y);
     if (prox < 10) {
       // console.log("eat");
       this.total++;
@@ -36,10 +42,11 @@ function Snake(scl) {
     if (this.total === this.tail.length) {
       for (let i = 0; i < this.tail.length - 1; i++) {
         this.tail[i] = this.tail[i + 1];
+        
       }
     }
     this.tail[this.total - 1] = createVector(this.x, this.y, scl, scl);
-    
+
     this.x = this.x + this.xSpeed * scl;
     this.y = this.y + this.ySpeed * scl;
     this.x = constrain(this.x, 0, width - scl);
@@ -47,10 +54,25 @@ function Snake(scl) {
   };
 
   this.display = () => {
-    fill('white');
-    for (let i = 0; i < this.total; i++) {
-      rect(this.tail[i].x, this.tail[i].y, scl, scl);
+    if (this.tail.length > 1) {
+      for (let i = 0; i < this.total; i++) {
+        fill("green");
+        noStroke();
+        rect(this.tail[i].x, this.tail[i].y, scl, scl);
+        
+      }
+    } else {
+      for (let i = 0; i < this.total; i++) {
+        fill("green");
+        noStroke();
+        rect(this.tail[i].x, this.tail[i].y, scl, scl);
+      }
     }
+
+    this.head(
+      this.tail[this.tail.length - 1].x,
+      this.tail[this.tail.length - 1].y
+    );
   };
 
   this.direction = (x, y) => {
