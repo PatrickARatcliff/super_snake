@@ -64,7 +64,7 @@ Contributor Covenant Code of Conduct
 ## Credits
 
 1. num.wav - mix.kit.co: <https://mixkit.co/free-sound-effects/eat/>
-2. thrash_metal.mp3 - pixabay.com - Muzaproduction <https://muzaproduction.net/en/: https://pixabay.com/music/search/genre/metal/>
+2. thrash_metal.mp3 - pixabay.com - Muzaproduction <https://muzaproduction.net/en/>: <https://pixabay.com/music/search/genre/metal/>
 3. blood.png - pnegg.com: <https://www.pngegg.com/en/png-bbwtb/download>
 4. field_bg.jpeg - freepik.com: <https://www.freepik.com/free-vector/aerial-view-garden-background_4613367.htm#query=grass%20birds%20eye%20view&position=5&from_view=keyword&track=ais>
 5. mouse.svg - creazilla.com: <https://creazilla.com/nodes/7905998-emoji-u1f401-icon>
