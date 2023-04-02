@@ -1,14 +1,10 @@
-let pcc, mouse, gameText;
+let pcc, mouse, gameText, scl;
 let newText = "CLICK TO START";
-let scl = 25;
 // Starting FPS
-let fr = 11;
+let fr = 12;
 let splatters = [];
 
 let running = false;
-
-let width = 700;
-let height = 700;
 
 function preload() {
   snakeHead = loadImage("assets/images/square_snake.svg");
@@ -21,11 +17,14 @@ function preload() {
 }
 
 function setup() {
+  windowWidth = constrain(windowWidth, 0, displayWidth);
+  height = windowWidth;
+  scl = height / 28;
   // Create variables to snap objects to grid
-  let cols = floor(width / scl);
+  let cols = floor(windowWidth / scl);
   let rows = floor(height / scl);
 
-  createCanvas(width, height);
+  createCanvas(windowWidth, height);
   background(0);
   gameText = new Txt(newText);
   gameText.display();
@@ -37,31 +36,38 @@ function setup() {
 
 function draw() {
   // Render splatter for each location where mouse is eaten
-  for (let i = 0; i < splatters.length; i++) {
-    let splatter = splatters[i];
-    image(afterMath, splatter.x - 20, splatter.y - 20, scl + 40, scl + 40);
-  }
+  mouse.splatter();
   // Pause game with spacebar event
   if (!running) return;
   // everything after this point doesn't run
   background(fieldBG);
-  for (let i = 0; i < splatters.length; i++) {
-    let splatter = splatters[i];
-    image(afterMath, splatter.x - 20, splatter.y - 20, scl + 40, scl + 40);
-  }
-
+  mouse.splatter();
+  // mouse.display();
   // Define actions when mouse "eaten" by snake
   if (pcc.eat(mouse)) {
     // Create/push splatter objects to array for rendering
     splatters.push({ x: mouse.x, y: mouse.y });
     // Re-locate mouse
     mouse.locate();
+    for (let i = 0; i < pcc.tail.length; i++) {
+      let segment = pcc.tail[i];
+      // If mouse is re-located on the snakes tail
+      let prox = dist(mouse.x, mouse.y, segment.x, segment.y);
+      if (prox < 1) {
+        // Re-locate mouse until no longer on tail
+        do {
+          mouse.locate();
+          // Reset proximity for new mouse location
+          prox = dist(mouse.x, mouse.y, segment.x, segment.y);
+        } while (prox < 1);
+      }
+    }
     eatSound.play();
   }
+  mouse.display();
   pcc.gameOver();
   pcc.update();
   pcc.display();
-  mouse.display();
 }
 // Start game via mouse-click
 function mouseClicked(event) {
@@ -84,12 +90,10 @@ function keyPressed(event) {
     if (!running) {
       bgMusic.pause();
       newText = "PAUSED";
-      gameText = new Txt(newText); 
+      gameText = new Txt(newText);
       gameText.paused();
     } else {
       bgMusic.loop();
-      // newText = "";
     }
-    
   }
 }

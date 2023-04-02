@@ -1,8 +1,8 @@
 function Snake(scl, img) {
-  let cols = floor(width / scl);
+  let cols = floor(windowWidth / scl);
   let rows = floor(height / scl);
 
-  this.x = width / 10;
+  this.x = windowWidth / 10;
   this.y = height / 10;
   this.xSpeed = 0;
   this.ySpeed = 0;
@@ -28,7 +28,7 @@ function Snake(scl, img) {
   this.gameStart = () => {
     running = true;
     newText = "";
-    this.x = width / 10;
+    this.x = windowWidth / 10;
     this.y = height / 10;
     this.xSpeed = 1;
     this.ySpeed = 0;
@@ -36,7 +36,6 @@ function Snake(scl, img) {
     this.tail = [];
     splatters = [];
     bgMusic.loop();
-    // this.xSpeed = 1;
   };
   // Define conditions for the game to reset after snake death
   this.gameOver = () => {
@@ -66,7 +65,7 @@ function Snake(scl, img) {
 
     this.x = this.x + this.xSpeed * scl;
     this.y = this.y + this.ySpeed * scl;
-    this.x = constrain(this.x, 0, width - scl);
+    this.x = constrain(this.x, 0, windowWidth - scl);
     this.y = constrain(this.y, 0, height - scl);
   };
 
