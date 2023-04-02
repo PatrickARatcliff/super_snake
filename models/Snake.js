@@ -47,7 +47,7 @@ function Snake(scl, img) {
         background(0);
         bgMusic.stop();
         newText = "YOU ARE DEAD";
-        gameText = new Txt(newText);
+        gameText = new Txt(newText, myFont);
         gameText.display();
       }
     }

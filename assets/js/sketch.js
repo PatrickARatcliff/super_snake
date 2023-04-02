@@ -1,4 +1,4 @@
-let pcc, mouse, gameText, scl;
+let pcc, mouse, gameText, myFont, scl;
 let newText = "CLICK TO START";
 // Starting FPS
 let fr = 12;
@@ -7,6 +7,7 @@ let splatters = [];
 let running = false;
 
 function preload() {
+  myFont = loadFont('assets/fonts/SanitariumBB.ttf');
   snakeHead = loadImage("assets/images/square_snake.svg");
   mouseIcon = loadImage("assets/images/mouse.svg");
   afterMath = loadImage("assets/images/blood.png");
@@ -26,7 +27,7 @@ function setup() {
 
   createCanvas(windowWidth, height);
   background(0);
-  gameText = new Txt(newText);
+  gameText = new Txt(newText, myFont);
   gameText.display();
   pcc = new Snake(scl, snakeHead);
   mouse = new Mouse(scl, mouseIcon);
@@ -90,7 +91,7 @@ function keyPressed(event) {
     if (!running) {
       bgMusic.pause();
       newText = "PAUSED";
-      gameText = new Txt(newText);
+      gameText = new Txt(newText, myFont);
       gameText.paused();
     } else {
       bgMusic.loop();
