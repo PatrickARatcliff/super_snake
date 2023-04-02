@@ -26,7 +26,17 @@ function Snake(scl, img) {
   };
   // Define actions for the game to start
   this.gameStart = () => {
+    running = true;
+    newText = "";
+    this.x = width / 10;
+    this.y = height / 10;
     this.xSpeed = 1;
+    this.ySpeed = 0;
+    this.total = 0;
+    this.tail = [];
+    splatters = [];
+    bgMusic.loop();
+    // this.xSpeed = 1;
   };
   // Define conditions for the game to reset after snake death
   this.gameOver = () => {
@@ -34,12 +44,12 @@ function Snake(scl, img) {
       let pos = this.tail[i];
       let prox = dist(this.x, this.y, pos.x, pos.y);
       if (prox <= 1) {
-        this.x = width / 10;
-        this.y = height / 10;
-        this.xSpeed = 0;
-        this.ySpeed = 0;
-        this.total = 0;
-        this.tail = [];
+        running = false;
+        background(0);
+        bgMusic.stop();
+        newText = "YOU ARE DEAD";
+        gameText = new Txt(newText);
+        gameText.display();
       }
     }
   };
