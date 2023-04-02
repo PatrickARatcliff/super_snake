@@ -34,7 +34,7 @@ This app is deployed using GitHub Pages . From a development perspective, this a
 
 ## Features
 
-This game features two sprites, a snake(pcc) and a mouse(npc). The game starts using a mouse-click. Take control of the snake using the arrow keys on your keyboard after the game starts. Direct the snake to the mouse to eat it ("num-num", splatter), after eating the mouse the snake will grow. If you naviagte the snake into the border or into its own tail the game is over and the sprites will be reset. You can pause the game using the spacebar.
+This game features two sprites, a snake(pcc) and a mouse(npc). The game starts using a mouse-click. Take control of the snake using the arrow keys on your keyboard after the game starts. Direct the snake to the mouse to eat it ("num-num", splatter), after eating the mouse the snake will grow. If you navigate the snake into the border or into its own tail the game is over and the sprites will be reset. You can pause the game using the spacebar.
 
 ## Technology
 
@@ -64,7 +64,7 @@ Contributor Covenant Code of Conduct
 ## Credits
 
 1. num.wav - mix.kit.co: <https://mixkit.co/free-sound-effects/eat/>
-2. thrash_metal.mp3 - pixabay.com - Muzaproduction <https://muzaproduction.net/en/: https://pixabay.com/music/search/genre/metal/>
+2. thrash_metal.mp3 - pixabay.com - Muzaproduction <https://muzaproduction.net/en/>: <https://pixabay.com/music/search/genre/metal/>
 3. blood.png - pnegg.com: <https://www.pngegg.com/en/png-bbwtb/download>
 4. field_bg.jpeg - freepik.com: <https://www.freepik.com/free-vector/aerial-view-garden-background_4613367.htm#query=grass%20birds%20eye%20view&position=5&from_view=keyword&track=ais>
 5. mouse.svg - creazilla.com: <https://creazilla.com/nodes/7905998-emoji-u1f401-icon>

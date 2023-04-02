@@ -34,7 +34,7 @@ This app is deployed using GitHub Pages . From a development perspective, this a
 
 ## Features
 
-This game features two sprites, a snake(pcc) and a mouse(npc). The game starts using a mouse-click. Take control of the snake using the arrow keys on your keyboard after the game starts. Direct the snake to the mouse to eat it ("num-num", splatter), after eating the mouse the snake will grow. If you naviagte the snake into the border or into its own tail the game is over and the sprites will be reset. You can pause the game using the spacebar.
+This game features two sprites, a snake(pcc) and a mouse(npc). The game starts using a mouse-click. Take control of the snake using the arrow keys on your keyboard after the game starts. Direct the snake to the mouse to eat it ("num-num", splatter), after eating the mouse the snake will grow. If you navigate the snake into the border or into its own tail the game is over and the sprites will be reset. You can pause the game using the spacebar.
 
 ## Technology
 
