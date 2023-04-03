@@ -1,10 +1,11 @@
-let pcc, mouse, gameText, myFont, scl;
+let pcc, mouse, gameText, myFont, scl, afterMath, squish;
 let newText = "CLICK TO START";
 // Starting FPS
 let fr = 12;
 let splatters = [];
 
 let running = false;
+
 
 function preload() {
   myFont = loadFont('assets/fonts/SanitariumBB.ttf');
@@ -14,6 +15,7 @@ function preload() {
   fieldBG = loadImage("assets/images/field_bg.jpeg");
   soundFormats("wav", "mp3");
   eatSound = loadSound("assets/audio/num.wav");
+  squish = loadSound("assets/audio/squish.wav");
   bgMusic = loadSound("assets/audio/thrash_metal.mp3");
 }
 
@@ -37,12 +39,12 @@ function setup() {
 
 function draw() {
   // Render splatter for each location where mouse is eaten
-  mouse.splatter();
+  mouse.splatter(afterMath);
   // Pause game with spacebar event
   if (!running) return;
   // everything after this point doesn't run
   background(fieldBG);
-  mouse.splatter();
+  mouse.splatter(afterMath);
   // mouse.display();
   // Define actions when mouse "eaten" by snake
   if (pcc.eat(mouse)) {

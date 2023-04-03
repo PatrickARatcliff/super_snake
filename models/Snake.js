@@ -8,11 +8,12 @@ function Snake(scl, img) {
   this.ySpeed = 0;
   this.total = 1;
   this.tail = [];
+  this.img = img;
   // Create unique tile using image
-  this.head = (x, y) => {
+  this.head = (x, y, img, size) => {
     noStroke();
     noFill();
-    image(img, x - 2.5, y - 2.5, scl + 5, scl + 5);
+    image(img, x - size / 2, y - size / 2, scl + size, scl + size);
   };
   // Return boolean for snake to eat mouse
   this.eat = (pos) => {
@@ -30,6 +31,7 @@ function Snake(scl, img) {
     newText = "";
     this.x = windowWidth / 10;
     this.y = height / 10;
+    this.img = img;
     this.xSpeed = 1;
     this.ySpeed = 0;
     this.total = 0;
@@ -49,6 +51,7 @@ function Snake(scl, img) {
         newText = "YOU ARE DEAD";
         gameText = new Txt(newText, myFont);
         gameText.display();
+        return true;
       }
     }
   };
@@ -81,7 +84,9 @@ function Snake(scl, img) {
     // Change unique tile for initial (last) element in tail array
     this.head(
       this.tail[this.tail.length - 1].x,
-      this.tail[this.tail.length - 1].y
+      this.tail[this.tail.length - 1].y,
+      this.img,
+      5
     );
   };
   // Change snake direction based on key press events
